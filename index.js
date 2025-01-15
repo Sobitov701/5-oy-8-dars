@@ -14,9 +14,10 @@ btn &&
           return response.json();
         }
       })
-      .then(function (posts) {
-        posts.forEach(function (post) {
-          console.log(post);
+      .then(function (data) {
+        data.forEach(function (post) {
+          console.log(post.title);
+          console.log(post.body);
         });
       })
       .catch(function (error) {
@@ -43,7 +44,12 @@ btn2 &&
         }
       })
       .then(function (data) {
-        console.log(data.results);
+        const user = data.results[0];
+        console.log(` ${user.name.first} ${user.name.last}`);
+        console.log(user.email);
+        console.log(
+          ` ${user.location.street}, ${user.location.city}, ${user.location.country}`
+        );
       })
       .catch(function (error) {
         console.log(error);
@@ -67,7 +73,10 @@ btn3 &&
         }
       })
       .then(function (data) {
-        console.log(data);
+        console.log(data.cases);
+        console.log(data.recovered);
+        console.log(data.deaths);
+        console.log(data.active);
       })
       .catch(function (error) {
         console.log(error);
@@ -82,7 +91,7 @@ const btn4 = document.getElementById("btn4");
 btn4 &&
   btn4.addEventListener("click", function (event) {
     event.preventDefault();
-    fetch(" https://api.coindesk.com/v1/bpi/currentprice.json", {
+    fetch("https://api.coindesk.com/v1/bpi/currentprice.json", {
       method: "GET",
     })
       .then(function (response) {
@@ -91,7 +100,7 @@ btn4 &&
         }
       })
       .then(function (data) {
-        console.log(data);
+        console.log(data.bpi.USD.rate);
       })
       .catch(function (error) {
         console.log(error);
@@ -99,14 +108,16 @@ btn4 &&
   });
 
 //5-misol
-// Shahar nomi (city) parametrini API'ga berib, o'sha shahardagi hozirgi haroratni (temperature) konsolga chiqarish
+//Shahar nomi (city) parametrini API'ga berib, o'sha shahardagi hozirgi haroratni (temperature) konsolga chiqarish
 
 const btn5 = document.getElementById("btn5");
 
 btn5 &&
   btn5.addEventListener("click", function (event) {
     event.preventDefault();
-    fetch(" https://goweather.herokuapp.com/weather/Tashkent", {
+    const city = "";
+
+    fetch(`https://goweather.herokuapp.com/weather/Fergana`, {
       method: "GET",
     })
       .then(function (response) {
@@ -115,7 +126,7 @@ btn5 &&
         }
       })
       .then(function (data) {
-        console.log(data);
+        console.log(data.temperature);
       })
       .catch(function (error) {
         console.log(error);
