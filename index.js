@@ -39,8 +39,6 @@ btn2 &&
       .then(function (response) {
         if (response.status === 200) {
           return response.json();
-        } else {
-          throw new Error(`Xatolik: ${response.status}`);
         }
       })
       .then(function (data) {
@@ -117,7 +115,7 @@ btn5 &&
     event.preventDefault();
     const city = "";
 
-    fetch(`https://goweather.herokuapp.com/weather/Fergana`, {
+    fetch(`https://goweather.herokuapp.com/weather/Yaypan`, {
       method: "GET",
     })
       .then(function (response) {
